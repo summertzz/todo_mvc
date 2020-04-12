@@ -14,7 +14,7 @@
       <input
         type="checkbox"
         :checked="item.completed"
-        @click="toggleTodo(item.id)"
+        @click="handleToggleTodo(item.id)"
       >
       <span
         v-if="curTodoId !== item.id"
@@ -42,7 +42,15 @@
 
 <script>
 import 'normalize.css';
-import shortid from 'short-id';
+
+import {
+  getTodos,
+  newTodo,
+  removeTodo,
+  updateTodo,
+  clearCompletedTodos,
+  toggleTodo} from './api/index.js';
+
 export default {
   data() {
     return {
@@ -59,6 +67,7 @@ export default {
       type: 'all'
     }
   },
+
   computed: {
     todosCount() {
       return this.todos.filter((item => !item.completed)).length;
@@ -73,52 +82,43 @@ export default {
       return this.todos;
     }
   },
+
+  created() {
+    this.todos = getTodos()
+  },
+
   methods: {
-    // 添加代办项
-    newTodo(title) {
-      this.todos.push({
-        id: shortid.generate(),
-        title: title,
-        completed: false
-      })
-    },
-    // 删除代办项
-    removeTodo(id) {
-      const targetIndex = this.todos.findIndex(item => item.id === id);
-      this.todos.splice(targetIndex, 1);
-    },
-    // 修改代办项
-    updateTodo(id, title) {
-      const targetIndex = this.todos.findIndex(item => item.id === id);
-      this.todos[targetIndex].title = title;
-    },
     handleNewTodo() {
       if (this.newTodoTitle) {
-        this.newTodo(this.newTodoTitle);
+        newTodo(this.newTodoTitle);
         this.newTodoTitle = ''
+        this.todos = getTodos()
       }
     },
     handleRemoveTodoClick(id) {
-      this.removeTodo(id)
+      removeTodo(id)
+      this.todos = getTodos()
     },
     async handleTodoTitleClick(id, title) {
       this.curTodoId = id;
       this.editTodoTitle = title;
       await this.$nextTick();
-      console.log(this.$refs)
       this.$refs[`inputRef-${id}`][0].focus()
     },
     handleEditTodoTitle(id) {
-      this.updateTodo(id, this.editTodoTitle);
+      updateTodo(id, this.editTodoTitle);
       this.curTodoId = null
+      this.todos = getTodos()
     },
-    toggleTodo(id) {
-      const targetIndex = this.todos.findIndex((item) => item.id === id);
-      this.todos[targetIndex].completed = !this.todos[targetIndex].completed;
+
+    handleToggleTodo(id) {
+      toggleTodo(id)
+      this.todos = getTodos()
     },
 
     handleClearCompletedTodos() {
-      this.todos = this.todos.filter(item => !item.completed)
+      clearCompletedTodos();
+      this.todos = getTodos()
     },
     handleHideEditTodo() {
       this.curTodoId = null;
