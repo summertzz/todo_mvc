@@ -1338,6 +1338,11 @@ assert@^1.1.1:
     object-assign "^4.1.1"
     util "0.10.3"
 
+assertion-error@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/assertion-error/download/assertion-error-1.0.0.tgz#c7f85438fdd466bc7ca16ab90c81513797a5d23b"
+  integrity sha1-x/hUOP3UZrx8oWq5DIFRN5el0js=
+
 assign-symbols@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/assign-symbols/download/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
@@ -4420,6 +4425,11 @@ merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/merge-descriptors/download/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
 
+merge-recursive@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.npm.taobao.org/merge-recursive/download/merge-recursive-0.0.3.tgz#de7901efcaecc906d8cab2ad1e9c470f5a3dae84"
+  integrity sha1-3nkB78rsyQbYyrKtHpxHD1o9roQ=
+
 merge-source-map@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/merge-source-map/download/merge-source-map-1.1.0.tgz#2fdde7e6020939f70906a68f2d7ae685e4c8c646"
@@ -4741,6 +4751,11 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.npm.taobao.org/normalize-url/download/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
 
+normalize.css@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.npm.taobao.org/normalize.css/download/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
+  integrity sha1-m5iiCHOLnMJjTKrLxC0THJdIe/M=
+
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.npm.taobao.org/npm-run-path/download/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -4766,6 +4781,13 @@ num2fraction@^1.2.2:
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/number-is-nan/download/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
+
+oath@latest:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/oath/download/oath-1.0.0.tgz#2f4e1f7797b903a78b243527dc68245b0aeb0d58"
+  integrity sha1-L04fd5e5A6eLJDUn3GgkWwrrDVg=
+  dependencies:
+    simple-assert "~1.0.0"
 
 oauth-sign@~0.9.0:
   version "0.9.0"
@@ -5997,6 +6019,13 @@ schema-utils@^2.0.0, schema-utils@^2.5.0, schema-utils@^2.6.1, schema-utils@^2.6
     ajv "^6.12.0"
     ajv-keywords "^3.4.1"
 
+sechash@~0.2.1:
+  version "0.2.1"
+  resolved "https://registry.npm.taobao.org/sechash/download/sechash-0.2.1.tgz#8b71fe47d68272f47a35f1640e4cc921325b133b"
+  integrity sha1-i3H+R9aCcvR6NfFkDkzJITJbEzs=
+  dependencies:
+    oath latest
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/select-hose/download/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -6125,9 +6154,24 @@ shell-quote@^1.6.1:
   version "1.7.2"
   resolved "https://registry.npm.taobao.org/shell-quote/download/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
 
+short-id@^0.1.0-1:
+  version "0.1.0-1"
+  resolved "https://registry.npm.taobao.org/short-id/download/short-id-0.1.0-1.tgz#a4c0f3537fff4623ff84964882b5d43019a24095"
+  integrity sha1-pMDzU3//RiP/hJZIgrXUMBmiQJU=
+  dependencies:
+    merge-recursive "0.0.3"
+    sechash "~0.2.1"
+
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.3"
   resolved "https://registry.npm.taobao.org/signal-exit/download/signal-exit-3.0.3.tgz?cache=0&sync_timestamp=1585253750175&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsignal-exit%2Fdownload%2Fsignal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
+
+simple-assert@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/simple-assert/download/simple-assert-1.0.0.tgz#53f1790000d714424124290780bc2a3e511cf0ef"
+  integrity sha1-U/F5AADXFEJBJCkHgLwqPlEc8O8=
+  dependencies:
+    assertion-error "1.0.0"
 
 simple-swizzle@^0.2.2:
   version "0.2.2"
