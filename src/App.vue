@@ -54,13 +54,7 @@ import {
 export default {
   data() {
     return {
-      todos: [
-        {
-          id: '001',
-          title: 'aaa',
-          completed: false,
-        }
-      ],
+      todos: [],
       newTodoTitle: '',
       curTodoId: null,
       editTodoTitle: '',
@@ -83,21 +77,21 @@ export default {
     }
   },
 
-  created() {
-    this.todos = getTodos()
+  async created() {
+    this.todos = await getTodos()
   },
 
   methods: {
-    handleNewTodo() {
+    async handleNewTodo() {
       if (this.newTodoTitle) {
-        newTodo(this.newTodoTitle);
+        await newTodo(this.newTodoTitle);
         this.newTodoTitle = ''
-        this.todos = getTodos()
+        this.todos = await getTodos()
       }
     },
-    handleRemoveTodoClick(id) {
-      removeTodo(id)
-      this.todos = getTodos()
+    async handleRemoveTodoClick(id) {
+      await removeTodo(id)
+      this.todos = await getTodos()
     },
     async handleTodoTitleClick(id, title) {
       this.curTodoId = id;
@@ -105,20 +99,20 @@ export default {
       await this.$nextTick();
       this.$refs[`inputRef-${id}`][0].focus()
     },
-    handleEditTodoTitle(id) {
-      updateTodo(id, this.editTodoTitle);
+    async handleEditTodoTitle(id) {
+      await updateTodo(id, this.editTodoTitle);
       this.curTodoId = null
-      this.todos = getTodos()
+      this.todos = await getTodos()
     },
 
-    handleToggleTodo(id) {
-      toggleTodo(id)
-      this.todos = getTodos()
+    async handleToggleTodo(id) {
+      await toggleTodo(id)
+      this.todos = await getTodos()
     },
 
-    handleClearCompletedTodos() {
-      clearCompletedTodos();
-      this.todos = getTodos()
+    async handleClearCompletedTodos() {
+      await clearCompletedTodos();
+      this.todos = await getTodos()
     },
     handleHideEditTodo() {
       this.curTodoId = null;
